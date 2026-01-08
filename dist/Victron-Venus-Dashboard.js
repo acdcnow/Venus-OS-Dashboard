@@ -7,7 +7,7 @@
 */
 
 console.info(
-  "%c 🗲 %c - %cVenus OS BD%c - %c 🗲 \n%c version 0.2.00 ",
+  "%c 🗲 %c - %cVictron Venus BD%c - %c 🗲 \n%c version 0.1.20",
   "color: white; font-weight: bold; background: black",
   "color: orange; font-weight: bold; background: blue; font-weight: bold;",
   "color: white; font-weight: bold; background: blue; text-decoration: underline; text-decoration-color: orange; text-decoration-thickness: 5px; text-underline-offset: 2px;",
@@ -188,4 +188,5 @@ window.customCards.push({
   preview: true,
   description: 'A DashBoard that looklike Venos OS gui-v2 from Victron.',
 });
+
 
