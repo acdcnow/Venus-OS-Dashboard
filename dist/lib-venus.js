@@ -25,8 +25,7 @@ export function baseRender(config, appendTo) {
     		<svg id="svg_container" class="line" viewBox="0 0 1000 600" width="100%" height="100%">
     			<defs>
     				<filter id="blurEffect">
-    					<feGaussianBlur in="SourceGraphic" stdDeviation="1"/> <!-- Ajuste stdDeviation pour plus ou moins de flou -->
-    				</filter>
+    					<feGaussianBlur in="SourceGraphic" stdDeviation="1"/> </filter>
     				<radialGradient id="gradientDark" cx="50%" cy="50%" r="50%">
     					<stop offset="0%" stop-color="#ffffff" stop-opacity="1"></stop>
     					<stop offset="90%" stop-color="#ffffff" stop-opacity="0"></stop>
@@ -185,6 +184,11 @@ export function fillBox(config, styles, isDark, hass, appendTo) {
         let state = hass.states[device.entity];
         let value = state ? state.state : 'N/C';
         let unit = state && state.attributes.unit_of_measurement ? state.attributes.unit_of_measurement : '';
+
+        // Added logic for decimal formatting
+        if (state && !isNaN(parseFloat(state.state)) && device.decimals !== undefined && device.decimals !== null && device.decimals !== "") {
+             value = parseFloat(state.state).toFixed(device.decimals);
+        }
             
         let addGauge = "";
         let addHeaderEntity = "";
@@ -1068,4 +1072,3 @@ export function getDefaultConfig(hass) {
         },
     }
 }
-
