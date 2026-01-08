@@ -194,12 +194,10 @@ export function tabColRender(col, appendTo) {
 
     let tabsHTML = ''; 
     for (let i = 1; i <= boxCol; i++) {
-        // Manually managing active attribute for sub-tabs
         const isActive = (i - 1) === appendTo._currentSubTab ? 'active' : '';
         tabsHTML += `<sl-tab slot="nav" panel="anchor" label="1-${i}" data-tab="${i - 1}" ${isActive}>${col}-${i}</sl-tab>`;
     }
             
-    // FIX: Added 'active' to sl-tab-panel so content is visible
     tabContent.innerHTML = `
         <div class="devices-editor">
             <sl-tab-group id="subTab-group">
@@ -229,7 +227,6 @@ export function renderSubTabContent(col, appendTo) {
 
 /************************************************/
 /* Sub-tab content rendering function:          */
-/* all box config zones basically               */
 /************************************************/
 export function subtabRender(box, config, hass, appendTo) {
     
@@ -936,10 +933,16 @@ export function attachLinkClick(renderTabContent, appendTo) {
 /* Click management function    */
 /********************************/
 export function attachSubLinkClick(appendTo) {
-    appendTo.shadowRoot.querySelectorAll('#subTab-group sl-tab').forEach((sublink) => {
+    const tabs = appendTo.shadowRoot.querySelectorAll('#subTab-group sl-tab');
+    
+    tabs.forEach((sublink) => {
         if (eventHandlers.has(sublink)) return;
 
         const handleClick = (e) => {
+            // FIX: Manually update visual state by removing/adding 'active' attribute
+            tabs.forEach(tab => tab.removeAttribute('active'));
+            e.currentTarget.setAttribute('active', '');
+
             const tab = parseInt(e.currentTarget.getAttribute('data-tab'), 10);
             appendTo._currentSubTab = tab;
             renderSubTabContent(appendTo._currentTab, appendTo);
