@@ -2,17 +2,17 @@ export function cssDataDark(user) {
     var css =`
     
         ha-card {
-            --box-background-color: #1f2a3c;  	/* Couleur de fond de la box */
-            --box-shadow-color: #38619b;      	/* Couleur de l'ombre de la box */
-            --anchor-color: #38619b;            /* Couleur du point d'accroche */
-	    --line-color: #4369a2; 				/* Couleur de la ligne */
+            --box-background-color: #1f2a3c;  	/* Box background color */
+            --box-shadow-color: #38619b;      	/* Box shadow color */
+            --anchor-color: #38619b;            /* Anchor point color */
+	    --line-color: #4369a2; 				/* Line color */
         }
         
         .db-container {
             position: relative;
-            width: 100%; /* Prend toute la largeur disponible */
-            padding-bottom: 60%; /* Définit la hauteur à 60% de la largeur */
-            overflow: hidden; /* Cache tout dépassement éventuel */
+            width: 100%; /* Takes full available width */
+            padding-bottom: 60%; /* Sets height to 60% of width */
+            overflow: hidden; /* Hides any overflow */
         }
         
   
@@ -49,11 +49,11 @@ export function cssDataDark(user) {
         }
 
         .box {
-            background-color: var(--box-background-color);  /* Utilisation de la variable pour la couleur de fond */
+            background-color: var(--box-background-color);  /* Use variable for background color */
             color: white;
             /*font-weight: bold;*/
             border-radius: 5px;
-            box-shadow: 0px 0px 1px 2px var(--box-shadow-color);  /* Utilisation de la variable pour la couleur de l'ombre */
+            box-shadow: 0px 0px 1px 2px var(--box-shadow-color);  /* Use variable for shadow color */
             height: 100%;
             max-height: 45%;
             margin: 5px;
@@ -65,15 +65,15 @@ export function cssDataDark(user) {
             padding: 3% 5%;
         }
 
-        /* Point d'accroche */
+        /* Anchor point */
         .anchor {
             position: absolute;
-            background-color: var(--anchor-color); /* Utilisation de la variable pour la couleur du point d'accroche */
-            border-radius: 50%; /* Rond */
+            background-color: var(--anchor-color); /* Use variable for anchor color */
+            border-radius: 50%; /* Round */
 			box-shadow: 0px 0px 1px 1px var(--anchor-color);
         }
 
-        /* Position des points pour la colonne 2 */
+        /* Point positions for column 2 */
         .box .anchor-L {
 			width: 5px;
             height: 10px;
@@ -229,7 +229,7 @@ export function cssDataDark(user) {
 		    background-repeat: repeat;
 		    background-size: 30px 12px;
 
-		    /* Masque pour estomper */
+		    /* Mask for fading */
 		    mask-image: linear-gradient(to bottom, #fff4, transparent);
 		    mask-repeat: no-repeat;
 		    mask-size: 100% 100%;
@@ -259,4 +259,3 @@ export function cssDataDark(user) {
     return css;
 
 }
-  
