@@ -18,6 +18,7 @@ export default {
     sensor_title: "Configuration du sensor principal",
     entity_choice: "Choisir une entité",
     entity2_choice: "Choisir une entité secondaire",
+    decimals_choice: "Décimales",
     enable_graph: "Activer de Graphique",
     enable_gauge: "Afficher la Gauge en %",
     warning_gauge: "Ne peut être activé que si l'unité de mesure est en %",
