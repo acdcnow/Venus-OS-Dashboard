@@ -227,8 +227,7 @@ export function tabColRender(col, appendTo) {
         
             <sl-tab-panel id="sl-subTab-content" name="anchor">
               <div id="subTab-content" class="subTab-content">
-                <!-- Le contenu de la section active sera affiché ici -->
-              </div>
+                </div>
             </sl-tab-panel>
         </div>
     `;
@@ -292,7 +291,6 @@ export function subtabRender(box, config, hass, appendTo) {
     
     subTabContent.innerHTML = `
         
-        <!-- ICON ET NOM -->
         <ha-expansion-panel expanded outlined id="subPanel_header" header="${t("subtabRender", "header_title")}">
             <div class="col inner">
                 <div class="row">
@@ -313,7 +311,6 @@ export function subtabRender(box, config, hass, appendTo) {
             </div>
         </ha-expansion-panel>
         
-        <!-- ENTITE 1 et 2-->
         <ha-expansion-panel outlined id="subPanel_entities" header="${t("subtabRender", "sensor_title")}">
             <div class="col inner">
                 <ha-entity-picker
@@ -328,8 +325,17 @@ export function subtabRender(box, config, hass, appendTo) {
                     data-path="devices.${box}.entity2"
                 >
                 </ha-entity-picker>
+                
+                <ha-textfield
+                    class="cell"
+                    label="${t("subtabRender", "decimals_choice")}"
+                    type="number"
+                    min="0"
+                    max="5"
+                    data-path="devices.${box}.decimals"
+                    id="device_decimals"
+                ></ha-textfield>
     
-                <!-- SWITCHS GRAPH ET GAUGE -->
                 <div class="row">
                     <div class="row cell">
                         ${t("subtabRender", "enable_graph")} :
@@ -349,7 +355,6 @@ export function subtabRender(box, config, hass, appendTo) {
             </div>
         </ha-expansion-panel>
         
-        <!-- HEADER ET FOOTER 1 -->
         <ha-expansion-panel outlined id="subPanel_entities2" header="${t("subtabRender", "header_footer_title")}">
             <div class="col inner">
                 <div class="row">
@@ -367,7 +372,6 @@ export function subtabRender(box, config, hass, appendTo) {
                     </ha-entity-picker>
                 </div>
                 
-                <!-- FOOTER 2 ET 3 -->
                 <div class="row">
                     <ha-entity-picker
                         label="${t("subtabRender", "entity2_footer")}"
@@ -385,7 +389,6 @@ export function subtabRender(box, config, hass, appendTo) {
             </div>
         </ha-expansion-panel>
         
-        <!-- ANCHORS -->
         <ha-expansion-panel outlined id="subPanel_anchors" header="${t("subtabRender", "anchor_title")}">
             <div class="col inner">
                 <div class="row">
@@ -439,7 +442,6 @@ export function subtabRender(box, config, hass, appendTo) {
             </div>
         </ha-expansion-panel>
         
-        <!-- LINKS -->
         <div class="contMenu">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div class="headerMenu">${t("subtabRender", "add_links")}</div>
@@ -463,6 +465,7 @@ export function subtabRender(box, config, hass, appendTo) {
     const nameField = subTabContent.querySelector('#device_name');
     const entityPicker = subTabContent.querySelector('#device_sensor');
     const entity2Picker = subTabContent.querySelector('#device_sensor2');
+    const decimalsField = subTabContent.querySelector('#device_decimals');
     const graphSwitch = subTabContent.querySelector('#graph_switch');
     const gaugeSwitch = subTabContent.querySelector('#gauge_switch');
     const headerEntity = subTabContent.querySelector('#header_sensor');
@@ -485,6 +488,7 @@ export function subtabRender(box, config, hass, appendTo) {
     iconPicker.value = config?.devices?.[box]?.icon ?? ""; 
     entityPicker.value = config?.devices?.[box]?.entity ?? "";
     entity2Picker.value = config?.devices?.[box]?.entity2 ?? "";
+    decimalsField.value = config?.devices?.[box]?.decimals ?? "";
     headerEntity.value = config?.devices?.[box]?.headerEntity ?? "";
     footerEntity1.value = config?.devices?.[box]?.footerEntity1 ?? "";
     footerEntity2.value = config?.devices?.[box]?.footerEntity2 ?? "";
@@ -1135,4 +1139,3 @@ export function attachSubLinkClick(appendTo) {
         eventHandlers.set(sublink, handleClick);
     });
 }
-    
